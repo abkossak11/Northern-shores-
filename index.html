@@ -1,10 +1,500 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Website</title>
+  <meta charset="UTF-8" />
+  <title>Great Lakes Rock Tacks</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Handcrafted rock thumbtacks inspired by the Great Lakes: Superior, Michigan, Huron, Erie, and Ontario." />
+  <style>
+    :root {
+      --navy: #0a2a43;
+      --sand: #d9c7a3;
+      --slate: #6e6e6e;
+      --white: #ffffff;
+      --accent: #2c7fb8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--white);
+      color: var(--navy);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to bottom, var(--navy), #123955);
+      color: var(--white);
+      padding: 1.5rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    nav .logo {
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background: var(--sand);
+      padding: 3rem 1rem 2.5rem;
+    }
+
+    .hero-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+      margin-bottom: 1.25rem;
+      color: var(--navy);
+    }
+
+    .hero-tagline {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      border-color: var(--accent);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--navy);
+      border-color: var(--navy);
+    }
+
+    .hero-card {
+      background: var(--white);
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      padding: 1.5rem;
+      border: 1px solid rgba(10, 42, 67, 0.08);
+    }
+
+    .hero-card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--slate);
+    }
+
+    .hero-card li::before {
+      content: "• ";
+      color: var(--accent);
+    }
+
+    section {
+      padding: 2.5rem 1rem;
+    }
+
+    section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    section p {
+      margin-bottom: 0.75rem;
+      color: var(--slate);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      border-radius: 0.75rem;
+      border: 1px solid rgba(10, 42, 67, 0.08);
+      padding: 1.25rem;
+      background: var(--white);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(44, 127, 184, 0.1);
+      color: var(--accent);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+
+    .lakes-list {
+      list-style: none;
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .lakes-list li {
+      margin-bottom: 0.35rem;
+    }
+
+    .highlight {
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .shop-callout {
+      text-align: center;
+      background: #f5f3ee;
+      border-radius: 0.75rem;
+      padding: 1.75rem 1.25rem;
+      border: 1px solid rgba(10, 42, 67, 0.08);
+      margin-top: 1.5rem;
+    }
+
+    .shop-callout p {
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background: var(--navy);
+      color: var(--white);
+      padding: 1.5rem 1rem;
+      margin-top: 2rem;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      text-align: center;
+      opacity: 0.8;
+    }
+
+    a.inline-link {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a.inline-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 720px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding-top: 2.25rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to my site!</h1>
-    <p>Coming soon...</p>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Great Lakes Rock Tacks</div>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#lakes">Great Lakes</a></li>
+          <li><a href="#process">How They’re Made</a></li>
+          <li><a href="#shop">Shop</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-tagline">Handcrafted thumbtacks • Great Lakes inspired</div>
+          <h1>Bring the Great Lakes to your corkboard.</h1>
+          <p>
+            I create rock thumbtacks—“rock tacks”—using real stones inspired by the
+            shores of Lakes Superior, Michigan, Huron, Erie, and Ontario. Each tack
+            is a tiny, functional keepsake that celebrates the water, the shoreline,
+            and the places you love.
+          </p>
+          <div class="hero-buttons">
+            <!-- Replace the href with your actual Etsy shop URL -->
+            <a class="btn btn-primary" href="https://www.etsy.com" target="_blank" rel="noopener">
+              Visit my Etsy shop
+            </a>
+            <a class="btn btn-outline" href="#lakes">
+              Explore the Great Lakes collection
+            </a>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <h2>What makes these tacks special?</h2>
+          <ul>
+            <li>Real stones inspired by the Great Lakes region</li>
+            <li>Each tack is hand‑selected and handcrafted</li>
+            <li>No two pieces are exactly alike</li>
+            <li>Perfect for offices, studios, cabins, and gifts</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <h2>About the maker</h2>
+        <p>
+          I’ve always been drawn to the texture, color, and quiet weight of rocks—
+          especially those shaped by the Great Lakes. Rock tacks started as a small
+          idea: what if everyday thumbtacks could feel like tiny pieces of shoreline?
+        </p>
+        <p>
+          Each set is designed with care, from choosing stones that feel good in your
+          hand to mounting them securely on sturdy tacks. My goal is simple: to bring
+          a little bit of lake calm to your wall, desk, or bulletin board.
+        </p>
+      </div>
+    </section>
+
+    <!-- Great Lakes Collection -->
+    <section id="lakes">
+      <div class="container">
+        <h2>Great Lakes collection</h2>
+        <p>
+          Every lake has its own personality—color, mood, and shoreline. I highlight
+          those differences in each collection, so you can choose the lake that feels
+          most like home.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <span class="badge">Lake Superior</span>
+            <h3>Superior stones</h3>
+            <p>
+              Inspired by the rugged, dramatic shores of Lake Superior—cool grays,
+              deep blues, and strong, solid shapes.
+            </p>
+            <ul class="lakes-list">
+              <li><span class="highlight">Look for:</span> darker stones, bold contrast, “stormy” tones.</li>
+              <li><span class="highlight">Vibe:</span> powerful, wild, and grounding.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <span class="badge">Lake Michigan</span>
+            <h3>Michigan shoreline</h3>
+            <p>
+              Inspired by sandy beaches and smooth, wave‑worn stones—soft neutrals,
+              gentle patterns, and calm shapes.
+            </p>
+            <ul class="lakes-list">
+              <li><span class="highlight">Look for:</span> beige, cream, and soft gray stones.</li>
+              <li><span class="highlight">Vibe:</span> warm, familiar, and cozy.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <span class="badge">Lake Huron</span>
+            <h3>Huron textures</h3>
+            <p>
+              Inspired by rocky shorelines and islands—interesting textures, speckles,
+              and layered colors.
+            </p>
+            <ul class="lakes-list">
+              <li><span class="highlight">Look for:</span> speckled stones and unique patterns.</li>
+              <li><span class="highlight">Vibe:</span> detailed, curious, and playful.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <span class="badge">Lake Erie</span>
+            <h3>Erie warmth</h3>
+            <p>
+              Inspired by sunsets and shallower waters—warmer tones and softer edges.
+            </p>
+            <ul class="lakes-list">
+              <li><span class="highlight">Look for:</span> warm browns, reds, and soft shapes.</li>
+              <li><span class="highlight">Vibe:</span> inviting, bright, and friendly.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <span class="badge">Lake Ontario</span>
+            <h3>Ontario calm</h3>
+            <p>
+              Inspired by quiet harbors and smooth stones—cool, balanced colors and
+              simple, clean forms.
+            </p>
+            <ul class="lakes-list">
+              <li><span class="highlight">Look for:</span> cool grays and balanced shapes.</li>
+              <li><span class="highlight">Vibe:</span> peaceful, minimal, and refined.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="shop-callout" id="shop">
+          <h3>Ready to see what’s available?</h3>
+          <p>
+            I list finished sets on Etsy, organized by lake and style. New stones and
+            combinations appear regularly, depending on what the shoreline offers.
+          </p>
+          <!-- Replace the href with your actual Etsy shop URL -->
+          <a class="btn btn-primary" href="https://www.etsy.com" target="_blank" rel="noopener">
+            Browse current listings on Etsy
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process">
+      <div class="container">
+        <h2>How the rock tacks are made</h2>
+        <p>
+          Each tack goes through a simple but careful process to make sure it looks
+          good and holds up to everyday use.
+        </p>
+        <div class="grid">
+          <div class="card">
+            <h3>1. Selecting stones</h3>
+            <p>
+              I choose stones for texture, color, and feel—small enough for a tack,
+              but large enough to show off their character.
+            </p>
+          </div>
+          <div class="card">
+            <h3>2. Cleaning & finishing</h3>
+            <p>
+              Stones are cleaned and, when needed, lightly polished to bring out
+              natural patterns while keeping their organic look.
+            </p>
+          </div>
+          <div class="card">
+            <h3>3. Mounting</h3>
+            <p>
+              Each stone is securely attached to a sturdy thumbtack base using strong
+              adhesive and time to cure fully.
+            </p>
+          </div>
+          <div class="card">
+            <h3>4. Testing & pairing</h3>
+            <p>
+              I test each tack for stability, then group them into sets that feel
+              visually balanced and satisfying together.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <h2>Contact & custom ideas</h2>
+        <p>
+          Have a favorite lake, color palette, or idea for a custom set? I’m happy
+          to talk about special requests, gifts, or larger orders.
+        </p>
+        <p>
+          You can reach me directly at
+          <a class="inline-link" href="mailto:youremail@example.com">youremail@example.com</a>
+          or send a message through my Etsy shop.
+        </p>
+        <p>
+          If you’re local to the Great Lakes region, I especially love hearing about
+          the specific beaches, towns, or shorelines that mean something to you.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        &copy; <span id="year"></span> Great Lakes Rock Tacks · Inspired by Lakes Superior, Michigan, Huron, Erie, and Ontario.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
